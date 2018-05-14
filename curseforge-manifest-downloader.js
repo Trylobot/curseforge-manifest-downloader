@@ -11,6 +11,9 @@ const manifest_path = process.argv[2]
 const use_latest = process.argv[3] == '--latest'
 const manifest_json = JSON.parse(fs.readFileSync(manifest_path))
 const dest = `${path.dirname(manifest_path)}/mods/`
+if (!fs.existsSync(dest)) {
+  fs.mkdirSync(dest);
+}
 manifest_json.files.forEach( function( file ) {
   const url = use_latest ? 
     `http://minecraft.curseforge.com/projects/${file.projectID}/files/latest` :
