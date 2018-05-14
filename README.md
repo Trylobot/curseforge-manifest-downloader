@@ -1,0 +1,1 @@
+# curseforge-manifest-downloader
