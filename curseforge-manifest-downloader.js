@@ -8,7 +8,7 @@ const dest = `${path.dirname(manifest_path)}/mods/`
 manifest_json.files.forEach( function( file ) {
   const url = `http://minecraft.curseforge.com/projects/${file.projectID}/files/latest`
   // const url = `http://minecraft.curseforge.com/projects/${file.projectID}/files/${file.fileID}/download`
-  request( url, function( error, response, body ) {
+  request({ url, encoding:null }, function( error, response, body ) {
     if (!error && response.statusCode == 200 && body) {
       const filename = decodeURIComponent(path.basename(response.request.href))
       console.info(filename)
